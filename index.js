@@ -46,8 +46,7 @@ function writeConfig (fd, cb) {
       return exclusions.indexOf(name) === -1;
     });
     var buf = new Buffer(JSON.stringify(flags));
-
-    fs.write(fd, buf, 0, buf.length, null, function (writeErr, bytesWritten, buffer) {
+    fs.write(fd, buf, 0, buf.length, 0, function (writeErr, bytesWritten, buffer) {
       fs.close(fd, function (closeErr) {
         var err = writeErr || closeErr;
         if (err) {
